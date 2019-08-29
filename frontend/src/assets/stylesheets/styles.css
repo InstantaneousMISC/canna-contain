@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Merriweather&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+p {
+    font-family: 'Merriweather', serif;
+}

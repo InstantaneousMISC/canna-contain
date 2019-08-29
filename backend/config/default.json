@@ -1,0 +1,5 @@
+{
+    "db": {
+        "DBConnectString": "mongodb+srv://jcabell2288:ARch@@88ESte@cluster0-utuw6.azure.mongodb.net/test?retryWrites=true&w=majority"
+    }
+}
