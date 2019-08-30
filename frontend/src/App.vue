@@ -1,11 +1,10 @@
 <template>
   <v-app>
-    <component v-bind:is="getLayout"></component>
+    <component :is="getLayout"></component>
 
     <!--/*Hidden so that router can be used in router child components */
           router-view used in layout files
     -->
-
     <router-view class="hide" />
   </v-app>
 </template>
