@@ -4,6 +4,7 @@ const connectionString = config.get('db.DBConnectString')
 
 const connectDb = async () => {
     try {
+        console.log("connecting")
         await mongoose.connect(connectionString, {
             useNewUrlParser: true
         })

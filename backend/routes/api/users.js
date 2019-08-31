@@ -16,10 +16,10 @@ router.get('/', (req, res) => {
 
 //POST Registration
 router.post(
-    '/',
+    '/signup',
     //Validate Input
     [
-        check('name').not().isEmpty().withMessage("Name Can't be empty"),
+        check('name'),
         check('userName').isLength({
             min: 7
         }).not().isEmail().withMessage("Please enter a Username"),
