@@ -40,13 +40,13 @@ router.post(
             let User = req.body
             //continue if there are no errors
             //Look for existing users with same email or username
-            let emailExists = await Users.findOne({
+            let existingUser = await Users.findOne({
                 "email": User.email
             })
             let usernameExists = await Users.findOne({
                 "userName": User.userName
             })
-            if (emailExists || usernameExists) {
+            if (existingUser || usernameExists) {
                 return res.status(400).json({
                     errors: [{
                         msg: "User already exists"
@@ -71,7 +71,8 @@ router.post(
                 "user": {
                     id: newUser.id,
                     name: newUser.name,
-                    userName: newUser.userName
+                    userName: newUser.userName,
+                    email: newUser.email,
                 },
 
             }
@@ -85,6 +86,7 @@ router.post(
                     "user": {
                         name: newUser.name,
                         userName: newUser.userName,
+                        email: newUser.email,
                         id: newUser.id
                     }
                 })
@@ -94,7 +96,83 @@ router.post(
                     "user": {
                         name: newUser.name,
                         userName: newUser.userName,
+                        email: newUser.email,
                         id: newUser.id
+                    }
+                })
+            })
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+    })
+
+//POST Registration
+router.post(
+    '/login',
+    //Validate Input
+    [
+        check('email').isEmail().not().isEmpty().withMessage("Email Can't be empty"),
+        check("password").isLength({
+            min: 8
+        }).not().isEmpty().withMessage("You Must Enter a password")
+    ],
+    //react accrding to input validation
+    async (req, res) => {
+        console.log('Creating New User')
+        //check for errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.send(errors)
+        }
+        try {
+
+            let User = req.body
+            //continue if there are no errors
+            //Look for existing users with same email
+            let existingUser = await Users.findOne({
+                "email": User.email
+            })
+            if (!existingUser) {
+                return res.status(400).json({
+                    errors: [{
+                        msg: "User doesn't exist"
+                    }]
+                })
+            }
+            console.log('Verified User Exists in DB')
+
+            //compare password using bcrypt
+            let passMatch = await bcrypt.compare(User.password, existingUser.password)
+            if (!passMatch) {
+                return res.json({
+                    "errors": {
+                        "msg": " Password doesn't match"
+                    }
+                })
+            }
+            //If password matches create and send payload
+            const payload = {
+                "user": {
+                    id: existingUser.id,
+                    name: existingUser.name,
+                    userName: existingUser.userName,
+                    email: existingUser.email
+                },
+
+            }
+
+            await jwt.sign(payload, config.get('key'), {
+                expiresIn: 360000
+            }, (err, token) => {
+                if (err) throw err;
+                res.json({
+                    "token": token,
+                    "user": {
+                        id: existingUser.id,
+                        name: existingUser.name,
+                        userName: existingUser.userName,
+                        email: existingUser.email
                     }
                 })
             })

@@ -13,7 +13,7 @@
         <span class="spaceOut"></span>
         <i class="fa fa-cog"></i>
         <i class="fa fa-question-circle"></i>
-        <i class="fa fa-sign-out"></i>
+        <i class="fa fa-sign-out" v-on:click="logOut"></i>
       </header>
       <nav class="main-mini-nav">
         <a href="#" class="active">
@@ -83,6 +83,15 @@
 </template>
 
 <script>
+export default {
+  methods: {
+    //logout user
+    async logOut() {
+      await this.$store.commit("logOut");
+      this.$router.push({ path: "home" });
+    }
+  }
+};
 </script>
 
 <style scoped>

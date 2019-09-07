@@ -1,17 +1,21 @@
 <template>
   <div class="main-content-contain">
-    <h1>Login</h1>
+    <br />
+    <loginForm />
   </div>
 </template>
 
 <script>
+import loginForm from "../Forms/Login";
 export default {
   data() {
     return {
-      layout: "defaultLayout"
+      layout: "HomeLayout"
     };
   },
-  components: {},
+  components: {
+    loginForm
+  },
   async created() {
     await this.$store.commit("addLayout", this.layout);
     console.log("layout added");
@@ -21,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-  h1{
-    text-align:center;
-  }
+h1 {
+  text-align: center;
+}
 </style>

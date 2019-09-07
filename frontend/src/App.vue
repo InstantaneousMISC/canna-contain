@@ -12,6 +12,7 @@
 <script>
 import DefaultLayout from "./layouts/default";
 import DashLayout from "./layouts/Dash";
+import HomeLayout from "./layouts/DefaultEnhanced";
 export default {
   name: "App",
   data() {
@@ -21,7 +22,8 @@ export default {
   },
   components: {
     DefaultLayout,
-    DashLayout
+    DashLayout,
+    HomeLayout
   },
   computed: {
     getLayout() {

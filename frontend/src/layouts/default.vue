@@ -2,7 +2,7 @@
   <div>
     <header class="top-nav-header">
       <div class="top-logo">
-        <a>
+        <a v-on:click="pushTo('home')">
           <img
             src="../assets/images/Top shelf Hemp Reserve logo 1 - short.png"
             alt="Top Shelf Hemp COmpany White logo with black text and a gold box with top shelf directly above it and hemp reserve running through the center of it "
@@ -17,8 +17,11 @@
       </label>
       <div class="seperator"></div>
       <nav class="top-nav-links" id="top-vav-bar">
-        <a class="top-nav-link">Sign Up</a>
-        <a class="top-nav-link">Login</a>
+        <a class="top-nav-link" v-on:click="pushTo('signUp')">Sign Up</a>
+        <!-- Login/logout buttons -->
+        <a v-if="isLoggedIn === false" class="top-nav-link" v-on:click="pushTo('login')">Login</a>
+        <a v-else class="top-nav-link" v-on:click="logOut">Logout</a>
+        <!-- -->
       </nav>
     </header>
     <router-view />
@@ -26,7 +29,33 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.LOGGED;
+    }
+  },
+  methods: {
+    //logout user
+    async logOut() {
+      await this.$store.commit("logOut");
+      console.log(
+        "Logged out - loggedIn variable from state: " +
+          this.$store.state.loggedIn +
+          "token: " +
+          this.$store.state.token +
+          "user: " +
+          this.$store.state.user
+      );
+    },
+    pushTo(route) {
+      this.$router.push({ path: route });
+    }
+  }
+};
 </script>
 
 <style scoped>

@@ -1,12 +1,15 @@
 <template>
-  <div></div>
+  <div>
+    <h3>Welcome User:{{user.name}}</h3>
+    <h5>Your Username is: {{user.userName}}</h5>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      name: "James",
+      user: this.$store.getters.USER,
       layout: "DashLayout"
     };
   },

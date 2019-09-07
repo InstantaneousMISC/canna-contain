@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      layout: "DashLayout"
+      layout: "HomeLayout"
     };
   },
   components: {},
