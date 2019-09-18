@@ -13,7 +13,21 @@ export const store = new Vuex.Store({
             user: "",
             id: ""
         },
-        loggedIn: false
+        loggedIn: false,
+        strains: [],
+        activeStrain: {
+            name: "",
+            provider: "",
+            providerURL: "",
+            description: "",
+            rating: "",
+            appearance: "",
+            smell: "",
+            taste: "",
+            feel: "",
+            images: ""
+        },
+        providers: []
     },
     mutations: {
         addMessages(state,
@@ -23,6 +37,22 @@ export const store = new Vuex.Store({
         },
         addNewMessage(state, message) {
             state.messages.push(message)
+        },
+        addStrains(state,
+            incomingStrains
+        ) {
+            state.strains = incomingStrains
+        },
+        addStrain(state,
+            incomingStrain
+        ) {
+            state.activeStrain = incomingStrain
+            //images are stored as a string and needs to be split from component
+        },
+        addProviders(state,
+            incomingProviders
+        ) {
+            state.providers = incomingProviders
         },
         addLayout(state, NewLayout) {
             state.layout = NewLayout
@@ -59,6 +89,15 @@ export const store = new Vuex.Store({
         },
         LOGGED: state => {
             return state.loggedIn
+        },
+        STRAINS: state => {
+            return state.strains
+        },
+        ACTIVESTRAIN: state => {
+            return state.activeStrain
+        },
+        PROVIDERS: state => {
+            return state.providers
         }
     }
 })

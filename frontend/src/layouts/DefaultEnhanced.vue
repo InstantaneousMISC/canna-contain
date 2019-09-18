@@ -1,78 +1,85 @@
 <template>
   <div>
-    <nav class="user-options-nav">
-      <img
-        v-on:click="pushTo('home')"
-        class="icon-seperator-home"
-        src="../assets/images/gold-canna-leaf.svg"
-        alt="Gold cannabis leaf/seperator"
-      />
-      <section class="nav-account-options nav-options-contain">
-        <!-- Login/logout buttons -->
-        <a v-if="isLoggedIn === false" class="sign-in" v-on:click="pushTo('login')">Sign In</a>
-        <a v-else class="sign-out" v-on:click="logOut">Sign Out</a>
-        <!-- -->
-        <!-- Sign Up Link -->
-        <a v-on:click="pushTo('signUp')" class="create-acount">Create Account</a>
-      </section>
-      <div class="seperator"></div>
-      <section class="nav-social-icons nav-options-contain">
-        <a href="#" class="facebook">
-          <i class="fa fa-facebook-f"></i>
-        </a>
-        <a href="#" class="twitter">
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a href="#" class="instagram">
-          <i class="fa fa-instagram"></i>
-        </a>
-      </section>
-      <section class="nav-site-options nav-options-contain">
-        <a href="#" class="my-cart">My Cart</a>
-        <a href="#" class="account-support">Account Support</a>
-      </section>
-      <section class="searchbar-contain">
-        <form class="search-form">
-          <i class="fa fa-search search-icon"></i>
-          <input type="text" class="search-input" />
-        </form>
-      </section>
-    </nav>
-    <header styles="height:200px" class="display-header">
-      <div class="top-logo">
-        <a v-on:click="pushTo('home')">
-          <img
-            src="../assets/images/Top shelf Hemp Reserve logo 1 - short.png"
-            alt="Top Shelf Hemp COmpany White logo with whiye text and a gold box with top shelf directly above it and hemp reserve running through the center of it "
-          />
-        </a>
-      </div>
-    </header>
-    <header class="top-nav-header">
-      <input type="checkbox" id="top-bar-toggle" />
-      <label class="sandwhichBtn" for="top-bar-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <!-- Use to split containers<div class="seperator"></div> -->
-      <nav class="top-nav-links" id="top-vav-bar">
-        <a class="top-nav-link">Learning</a>
-        <a class="top-nav-link">Reviews</a>
-        <a class="top-nav-link">Blog</a>
-        <a class="top-nav-link">Instrsty</a>
-        <a class="top-nav-link">Shop</a>
+    <div>
+      <nav class="user-options-nav">
+        <img
+          v-on:click="pushTo('home')"
+          class="icon-seperator-home"
+          src="../assets/images/gold-canna-leaf.svg"
+          alt="Gold cannabis leaf/seperator"
+        />
+        <section class="nav-account-options nav-options-contain">
+          <!-- Login/logout buttons -->
+          <a v-if="isLoggedIn === false" class="sign-in" v-on:click="pushTo('/login')">Sign In</a>
+          <a v-else class="sign-out" v-on:click="logOut">Sign Out</a>
+          <!-- -->
+          <!-- Sign Up Link -->
+          <a
+            v-if="isLoggedIn === false"
+            class="create-account"
+            v-on:click="pushTo('/signUp')"
+          >Create Account</a>
+          <a v-else class="user-account" v-on:click="pushTo('/account')">Account</a>
+        </section>
+        <section class="nav-social-icons nav-options-contain">
+          <a href="#" class="facebook">
+            <i class="fa fa-facebook-f"></i>
+          </a>
+          <a href="#" class="twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="instagram">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </section>
+        <div class="seperator"></div>
+        <section class="searchbar-contain">
+          <form class="search-form">
+            <i class="fa fa-search search-icon"></i>
+            <input type="text" class="search-input" />
+          </form>
+        </section>
+        <section class="nav-site-options nav-options-contain">
+          <a href="#" class="my-cart">My Cart</a>
+          <a href="#" class="account-support">Account Support</a>
+        </section>
       </nav>
-    </header>
-    <nav class="secondary-nav-header">
-      <a>Best Of</a>
-      <a>Hempery Tour</a>
-      <a>Blogs</a>
-      <a>Events</a>
-      <a>Contests</a>
-      <a>Directory</a>
-    </nav>
-    <router-view />
+      <header styles="height:200px" class="display-header">
+        <div class="top-logo">
+          <a v-on:click="pushTo('home')">
+            <img
+              src="../assets/images/Top shelf Hemp Reserve logo 1 - short.png"
+              alt="Top Shelf Hemp COmpany White logo with whiye text and a gold box with top shelf directly above it and hemp reserve running through the center of it "
+            />
+          </a>
+        </div>
+      </header>
+      <header class="top-nav-header">
+        <input type="checkbox" id="top-bar-toggle" />
+        <label class="sandwhichBtn" for="top-bar-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <!-- Use to split containers<div class="seperator"></div> -->
+        <nav class="top-nav-links" id="top-vav-bar">
+          <a class="top-nav-link">Learning</a>
+          <a class="top-nav-link">Reviews</a>
+          <a class="top-nav-link">Blog</a>
+          <a class="top-nav-link">Industry</a>
+          <a class="top-nav-link">Shop</a>
+        </nav>
+      </header>
+      <nav class="secondary-nav-header">
+        <a v-on:click="pushTo('/strains')">Popular Strains</a>
+        <a v-on:click="pushTo('/providers')">Farms/Providers</a>
+        <a>Blogs</a>
+        <a>Events</a>
+        <a>Contests</a>
+        <a>Directory</a>
+      </nav>
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -89,15 +96,7 @@ export default {
   methods: {
     //logout user
     async logOut() {
-      await this.$store.commit("logOut");
-      console.log(
-        "Logged out - loggedIn variable from state: " +
-          this.$store.state.loggedIn +
-          "token: " +
-          this.$store.state.token +
-          "user: " +
-          this.$store.state.user
-      );
+      await this.$store.commit("/logOut");
     },
     pushTo(route) {
       this.$router.push({ path: route });
@@ -110,9 +109,13 @@ export default {
 .user-options-nav {
   min-height: 25px;
   display: flex;
-  flex-flow: nowrap row;
+  flex-flow: wrap row;
   align-items: center;
   padding: 0 25px;
+  position: fixed;
+  top: 0;
+  background: white;
+  width: 100%;
 }
 .user-options-nav > * {
   padding: 10px;
@@ -121,11 +124,16 @@ export default {
   color: black;
   text-transform: uppercase;
 }
+
 .user-options-nav .icon-seperator-home {
   height: 44px;
+  order: 1;
 }
 .user-options-nav .icon-seperator-home:hover {
   cursor: pointer;
+}
+.nav-account-options.nav-options-contain {
+  order: 2;
 }
 .user-options-nav .nav-options-contain {
   padding: inherit 20px;
@@ -141,19 +149,23 @@ export default {
   color: #800020;
 }
 .user-options-nav .nav-options-contain a:nth-child(1) {
-  border-right: 2px solid black;
+  border-right: 1px solid black;
+}
+.user-options-nav .nav-options-contain .account-support {
+  padding-right: 0px;
 }
 .user-options-nav .searchbar-contain .search-form {
   position: relative;
 }
 .user-options-nav .searchbar-contain .search-form .search-input {
-  border: solid 1px #878787;
+  border: 1px transparent;
+  border-bottom: #878787 solid 1px;
   height: 29px;
   padding-left: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .user-options-nav .searchbar-contain .search-form .search-input:focus {
   border: 1px transparent;
@@ -174,6 +186,16 @@ export default {
 .nav-social-icons {
   border-right: 0;
   padding-right: 0px;
+  order: 3;
+}
+.user-options-nav .seperator {
+  order: 4;
+}
+.nav-site-options.nav-options-contain {
+  order: 5;
+}
+.searchbar-contain {
+  order: 6;
 }
 .nav-social-icons a i {
   color: #800020;
@@ -184,6 +206,7 @@ export default {
 .user-options-nav .nav-social-icons a:nth-child(1) {
   border-right: 0;
 }
+
 .display-header {
   height: 150px;
   display: flex;
@@ -191,6 +214,7 @@ export default {
   background-size: cover;
   flex-flow: nowrap row;
   justify-content: center;
+  margin-top: 49px;
 }
 .top-nav-header {
   justify-content: center;
@@ -290,8 +314,54 @@ export default {
   display: none;
 }
 
-.seperator {
+.seperator,
+.seperate-items {
   flex-grow: 1;
+}
+@media (max-width: 896px) {
+  .display-header {
+    margin-top: 93px;
+  }
+  .searchbar-contain {
+    width: calc(100% - 107px);
+    order: 1;
+  }
+  .user-options-nav .searchbar-contain .search-form .search-input {
+    width: 60%;
+  }
+  .user-options-nav .icon-seperator-home {
+    order: 3;
+  }
+  .nav-account-options.nav-options-contain {
+    order: 6;
+  }
+  .nav-account-options.nav-options-contain {
+    order: 4;
+  }
+  .nav-social-icons {
+    order: 2;
+  }
+  .user-options-nav .seperator {
+    order: 5;
+  }
+  .user-options-nav {
+    /* height: 92px;
+    align-items: flex-end; */
+  }
+  .searchbar-contain {
+    /* position: absolute;
+    top: 0px;
+    width: 100%;
+    left: 0;
+    background: white; */
+  }
+  .user-options-nav .searchbar-contain .search-form {
+    /* width: 93%;
+    margin: auto; */
+  }
+  nav.top-nav-links {
+    top: 225px;
+  }
 }
 @media (max-width: 777px) {
   .sandwhichBtn {
@@ -305,13 +375,14 @@ export default {
   .top-nav-links {
     display: none;
     position: absolute;
-    top: 65px;
+    top: 93px;
     left: 0;
     flex-flow: nowrap column;
     background-color: #da9c05;
     width: 177px;
     height: calc(100vh - 65px);
     padding-top: 20px;
+    text-transform: uppercase;
   }
   .top-nav-header a.top-nav-link {
     color: white;
@@ -332,6 +403,54 @@ export default {
   }
   #top-bar-toggle[type="checkbox"]:checked + .sandwhichBtn {
     background-color: #eee;
+  }
+}
+@media (max-width: 529px) {
+  .user-options-nav {
+    flex-flow: column;
+  }
+  .display-header {
+    margin-top: 226px;
+  }
+  .searchbar-contain {
+    width: 100%;
+    order: 5;
+  }
+  .user-options-nav .searchbar-contain .search-form .search-input {
+    width: 100%;
+  }
+  .user-options-nav .icon-seperator-home {
+    order: 1;
+  }
+  .nav-account-options.nav-options-contain {
+    order: 3;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .nav-account-options.nav-options-contain a:hover,
+  .nav-site-options.nav-options-contain a:hover {
+    background: floralwhite;
+  }
+
+  .nav-account-options.nav-options-contain a,
+  .nav-site-options.nav-options-contain a {
+    width: 50%;
+    padding: 10px;
+  }
+  .nav-site-options.nav-options-contain {
+    order: 4;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .nav-social-icons {
+    order: 2;
+  }
+  .user-options-nav .seperator {
+    display: none;
   }
 }
 </style>

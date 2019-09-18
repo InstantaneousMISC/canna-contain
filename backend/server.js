@@ -13,9 +13,12 @@ const connectDB = require('./config/dbConnect.js')
 connectDB();
 
 //Bind Routes
+app.use('/api/providers', require('./routes/api/providers'))
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/messages',
     require('./routes/api/messages'))
+app.use('/api/strains',
+    require('./routes/api/strains'))
 
 app.listen(port, () => console.log(`app running on port ${port}`))
 

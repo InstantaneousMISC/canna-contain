@@ -137,7 +137,7 @@ header.main-top-header {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   border-bottom: solid 1px #ddd;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }

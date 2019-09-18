@@ -1,26 +1,31 @@
 <template>
-  <div>
-    <h3>Welcome User:{{user.name}}</h3>
-    <h5>Your Username is: {{user.userName}}</h5>
+  <div class="main-content-contain">
+    <br />
+    <h1>Add Strains</h1>
+    <AddStrainForm />
   </div>
 </template>
 
 <script>
+import AddStrainForm from "../Forms/AddStrainForm";
 export default {
   data() {
     return {
-      user: this.$store.getters.USER,
       layout: "HomeLayout"
     };
   },
-  components: {},
+  components: {
+    AddStrainForm
+  },
   async created() {
     await this.$store.commit("addLayout", this.layout);
-    console.log("layout added");
     console.log("Layout set to " + this.$store.getters.LAYOUT);
   }
 };
 </script>
 
 <style scoped>
+h1 {
+  text-align: center;
+}
 </style>
