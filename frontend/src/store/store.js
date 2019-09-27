@@ -16,18 +16,25 @@ export const store = new Vuex.Store({
         loggedIn: false,
         strains: [],
         activeStrain: {
+            _id: "",
             name: "",
-            provider: "",
-            providerURL: "",
             description: "",
             rating: "",
             appearance: "",
             smell: "",
             taste: "",
+            type: "",
             feel: "",
-            images: ""
+            images: "",
+            burn: "",
+            smoke: "",
+            notes: "",
+            terpenes: [],
+            providers: [],
+            reviews: []
         },
-        providers: []
+        providers: [],
+        isLoading: false,
     },
     mutations: {
         addMessages(state,
@@ -72,6 +79,9 @@ export const store = new Vuex.Store({
             state.loggedIn = false
             state.token = ""
             state.user = {}
+        },
+        toggleLoadState(state) {
+            !state.isLoading ? state.isLoading = true : state.isLoading = false;
         }
     },
     getters: {
@@ -98,6 +108,9 @@ export const store = new Vuex.Store({
         },
         PROVIDERS: state => {
             return state.providers
+        },
+        ISLOADING: state => {
+            return state.isLoading
         }
     }
 })

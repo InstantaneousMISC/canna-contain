@@ -19,6 +19,7 @@ app.use('/api/messages',
     require('./routes/api/messages'))
 app.use('/api/strains',
     require('./routes/api/strains'))
+app.use('/api/reviews', require('./routes/api/reviews'))
 
 app.listen(port, () => console.log(`app running on port ${port}`))
 

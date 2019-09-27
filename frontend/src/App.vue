@@ -6,6 +6,7 @@
           router-view used in layout files
     -->
     <router-view class="hide" />
+    <div v-if="isLoading" class="loading cover"></div>
   </v-app>
 </template>
 
@@ -28,6 +29,9 @@ export default {
   computed: {
     getLayout() {
       return this.$store.getters.LAYOUT;
+    },
+    isLoading() {
+      return this.$store.getters.ISLOADING;
     }
   },
   created() {
@@ -37,6 +41,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../src/assets/stylesheets/styles.css";
 .hide {
   display: none;
 }

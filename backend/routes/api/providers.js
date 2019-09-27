@@ -53,4 +53,31 @@ router.post('/addProvider', async (req, res) => {
 
 })
 
+
+//Find multiple providers
+router.post('/findProvider', async (req, res) => {
+    try {
+        console.log("finding providers")
+        //retrieve request data
+        const providerData = req.body.providerID
+        console.log(providerData)
+        //Search for a provdier by ID
+        let foundProvider = await provider.findById(providerData) //find provider by provided id
+
+        if (!foundProvider) res.send({
+            message: {
+                msg: "No Providers Found"
+            }
+        }).status(200)
+        res.send(foundProvider).status(200)
+    } catch (err) {
+        console.log(err)
+        res.send({
+            error: {
+                msg: "Issue finding provider"
+            }
+        })
+    }
+})
+
 module.exports = router

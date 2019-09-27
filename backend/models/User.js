@@ -17,6 +17,7 @@ const UserSchema = new schema({
         type: String,
         required: true
     },
+    role: String,
     date: {
         type: Date,
         default: Date.now()

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h3>Welcome User:{{user.name}}</h3>
+    <h3 v-bind="this.user">Welcome User:{{user.name}}</h3>
     <h5>Your Username is: {{user.userName}}</h5>
+    <div>
+      <button class="gray-btn" v-on:click="routeTo('/addstrain')">Add New Strains</button>
+      <button class="gray-btn" v-on:click="routeTo('/addproviders')">Add Providers</button>
+    </div>
   </div>
 </template>
 
@@ -16,8 +20,11 @@ export default {
   components: {},
   async created() {
     await this.$store.commit("addLayout", this.layout);
-    console.log("layout added");
-    console.log("Layout set to " + this.$store.getters.LAYOUT);
+  },
+  methods: {
+    async routeTo(route) {
+      this.$router.push({ path: route });
+    }
   }
 };
 </script>

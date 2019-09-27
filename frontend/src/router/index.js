@@ -10,10 +10,10 @@ import {
 } from '../store/store'
 import StrainsMain from "../components/Strains/StrainsMain.vue"
 import addStrainsMain from "../components/Strains/AddStrainMain.vue"
-
+import addStrainReview from "../components/Forms/AddStrainReviewForm.vue"
 import EditStrainMain from "../components/Strains/EditStrainMain.vue"
 import ProvidersMain from "../components/Providers/ProvidersMain.vue"
-
+import AddProviderMain from "../components/Providers/AddProviderMain.vue"
 
 Vue.use(VueRouter)
 
@@ -67,9 +67,19 @@ const routes = [{
         component: addStrainsMain
     },
     {
+        path: '/addStrainReview',
+        name: 'AddReview',
+        component: addStrainReview
+    },
+    {
         path: '/providers',
         name: 'PROVIDERSSMAIN',
         component: ProvidersMain
+    },
+    {
+        path: '/addProviders',
+        name: 'ADDPROVIDER',
+        component: AddProviderMain
     },
 ]
 

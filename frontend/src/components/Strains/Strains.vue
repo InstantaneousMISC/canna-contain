@@ -3,6 +3,7 @@
     <h1 class="section-title">Popular Strains</h1>
     <article v-for="strain in strains" v-bind:key="strain._id" v-on:click="strainPage(strain._id)">
       <img
+        v-if="strain.images"
         :src="require('../../assets/images/' + strain.images.split(',')[0].trim())"
         :alt="`Image of ${strain.name}`"
         :title="`Image of ${strain.name}`"
@@ -30,7 +31,7 @@ export default {
     this.retrieveStrains();
   },
   methods: {
-    //Retrieve messages
+    //Retrieve strains
     async retrieveStrains() {
       //Get messages from backend
       const retrievedStrains = (await axios.get(
@@ -38,8 +39,9 @@ export default {
       )).data;
       //Store messages in state
       await this.$store.commit("addStrains", retrievedStrains);
+
       //store messages in data
-      this.strains = this.$store.state.strains;
+      this.strains = await this.$store.state.strains;
     },
     async strainPage(id) {
       this.$router.push({ path: `/strains/${id}` });

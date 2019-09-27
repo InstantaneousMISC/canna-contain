@@ -14,8 +14,20 @@ const providerSchema = new schema({
         type: Date,
         default: Date.now()
     },
-    strains: [strainSchema],
-    reviews: [reviewSchema]
+    strains: [{
+        strainID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "strain"
+        },
+        name: String
+    }],
+    reviews: [{
+        description: String,
+        date: {
+            type: Date,
+            default: Date.now()
+        }
+    }]
 })
 
 module.exports = provider = mongoose.model('provider', providerSchema)

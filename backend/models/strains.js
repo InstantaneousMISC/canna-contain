@@ -6,24 +6,30 @@ const strainSchema = new schema({
         type: String,
         required: true
     },
-    description: String,
-    rating: {
-        type: Number,
-        min: 0,
-        max: 10,
+    description: {
+        type: String,
+        required: true
     },
-    appearance: String,
-    smell: String,
-    taste: String,
     type: String,
-    feel: String,
     images: String,
-    burn: String,
-    smoke: String,
-    notes: String,
-    terpenes: [{}],
-    providers: [{}],
-    reviews: [{}],
+    terpenes: [{
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'terpenes'
+        }
+    }],
+    providers: [{
+        providerID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'providers'
+        }
+    }],
+    reviews: [{
+        reviewID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'reviews'
+        },
+    }],
     dateAdded: {
         type: Date,
         default: Date.now()

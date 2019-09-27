@@ -27,7 +27,7 @@ router.post("/addStrain", async (req, res) => {
         console.log(req.body.name)
         let newStrain = await new Strains(strain)
         newStrain.save((err, strain) => {
-            if (err) res.json({
+            if (err) res.send({
                 errors: {
                     msg: "Problem saving strain"
                 }

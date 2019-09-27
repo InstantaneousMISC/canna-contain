@@ -37,30 +37,104 @@
                 required
               />
             </div>
-            <div class="half">
-              <label for="select-providers">Select Strain Type</label>
-              <select class="select-all">
-                <option>Sativa</option>
-                <option>Indica</option>
-                <option>Hybrid</option>
-              </select>
+            <div class="full sl-height note-w-rating">
+              <div class="rating">
+                <label for="strainAppearanceRating">Appearance Rating</label>
+                <input
+                  id="strainAppearanceRating"
+                  type="number"
+                  min="0"
+                  max="10"
+                  placeholder="Appearance rating?"
+                  v-model="strain.appearance"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+              <div class="note">
+                <label for="strainAppearance">Appearance</label>
+                <input
+                  id="strainAppearance"
+                  type="text"
+                  min="0"
+                  max="10"
+                  placeholder="Enter notes regarding the strains appearance"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+            </div>
+            <div class="full sl-height note-w-rating">
+              <div class="rating">
+                <label for="strainSmellRate">Smell Rating</label>
+                <input
+                  id="strainSmellRate"
+                  type="number"
+                  min="0"
+                  max="10"
+                  placeholder="Strain Smell Rating?"
+                  v-model="strain.smell"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+              <div class="note">
+                <label for="strainSmell">Smell</label>
+                <input
+                  id="strainSmell"
+                  type="text"
+                  min="0"
+                  max="10"
+                  placeholder="Strain Smell notes?"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+            </div>
+            <div class="full sl-height note-w-rating">
+              <div class="rating">
+                <label for="strainTouchRate">Touch Rating</label>
+                <input
+                  id="strainTouchRate"
+                  type="number"
+                  min="0"
+                  max="10"
+                  placeholder="Strain Touch Rating?"
+                  v-model="strain.feel"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+              <div class="note">
+                <label for="strainTouch">Touch</label>
+                <input
+                  id="strainTouch"
+                  type="text"
+                  min="0"
+                  max="10"
+                  placeholder="Describe how the strain feels"
+                  autocomplete="on"
+                  required
+                />
+              </div>
+            </div>
+            <div class="full sl-height">
+              <div class="rating">
+                <label for="strainTotalRate">Total Rating</label>
+                <input
+                  id="strainTotalRate"
+                  type="number"
+                  min="0"
+                  max="10"
+                  placeholder="Strain Total Rating"
+                  v-model="strain.rating"
+                  autocomplete="on"
+                  required
+                />
+              </div>
             </div>
             <div class="half">
-              <label for="select-providers">Add Terpenes</label>
-              <select placeholder="Select Strain Terpenes" class="select-all" id="select-terpenes">
-                <option value="Select a provider">Select Terpenes</option>
-                <option value="Select a provider">Alpha-Pinene</option>
-                <option value="Select a provider">Myrcene</option>
-                <option value="Select a provider">Limonene</option>
-                <option value="Select a provider">Beta-Caryophyllene</option>
-                <option value="Select a provider">Linalool</option>
-                <option value="Select a provider">Humulene</option>
-                <option value="Select a provider">Ocimene</option>
-                <option value="Select a provider">Terpinolene</option>
-              </select>
-            </div>
-            <div class="half">
-              <label for="select-providers">Add Providers</label>
+              <label for="select-providers">Select Providers</label>
               <select
                 placeholder="Enter Strain Providers URL"
                 class="select-all"
