@@ -11,29 +11,6 @@
             class="strain-image main-image"
           />
         </article>
-      </section>
-      <section class="side-content strain-detail-contain">
-        <h2>{{strain.name}}</h2>
-        <p>
-          <strong>Providers:</strong>
-          <a
-            v-for="provider in providers"
-            v-bind:key="provider.data._id"
-            :href="provider.data.url"
-            target="_blank"
-          >{{provider.data.name}}</a>
-        </p>
-        <p>
-          <strong>Description:</strong>
-          {{strain.description}}
-        </p>
-        <p>
-          <strong>Aroma:</strong>
-          {{strain.smell}}
-        </p>
-        <p>
-          <strong>Images:</strong>
-        </p>
         <div class="strain-image-options-contain">
           <img
             v-for="image in images"
@@ -55,53 +32,83 @@
           >{{provider.data.name}}</a>
         </article>
       </section>
-      <section class="show-reviews-container">
-        <h3>Reviews</h3>
-        <article v-for="review in RetrievedReviews" v-bind:key="review._id">
-          <div>Provider: {{review.provider.name}}</div>
-          <div>{{review.description}}</div>
-          <div>Rating{{review.rating}}</div>
-        </article>
-      </section>
-      <section class="strain-review-contain" v-if="isUserLoggedIn">
-        <div class="review-heading">
-          <h2>Add a Review</h2>
-          <p></p>
-        </div>
-        <form class="flex-column-nowrap">
-          <label for="strain-provider-select">Provider</label>
-          <select
-            class="select-all"
-            name="strain-providers"
-            id="strain-provider-select"
-            value="Select a provider to review"
+      <section class="side-content strain-detail-contain">
+        <h2>{{strain.name}}</h2>
+        <p>
+          <strong>Description:</strong>
+          {{strain.description}}
+        </p>
+        <br />
+        <br />
+        <section class="show-reviews-container">
+          <h3>Reviews ({{numberOfReviews}})</h3>
+          <article
+            v-for="review in RetrievedReviews"
+            v-bind:key="review._id"
+            class="review-contain"
           >
-            <option
-              value="Select A Provider To Review"
-              disabled
-              selected
-            >Select A Provider To Review</option>
-            <option
-              v-for="reviewProvider in providers"
-              :value="reviewProvider.data.name"
-              v-bind:key="reviewProvider.data.id"
-              v-on:click="setReviewsProvider(reviewProvider.data.name, reviewProvider.data._id)"
-            >{{reviewProvider.data.name}}</option>
-          </select>
-          <label for="review-TA">Review</label>
-          <textarea
-            name="strain-review"
-            id="review-TA"
-            cols="30"
-            rows="10"
-            v-model="review.description"
-          ></textarea>
-          <label for="reviewRating">Total Rating</label>
-          <input type="number" value="Rate" class="short-num-input" v-model="review.rating" />
-          <label v-on:click="addReview()" class="gray-btn">Add Review</label>
-          <div v-if="message.length > 0">{{message}}</div>
-          <div v-if="errors.msg > 0">{{errors.msg}}</div>
-        </form>
+            <div class="provider-title">
+              <span class="title">Purchased from &nbsp</span>
+              <a>{{review.provider.name}}</a>
+            </div>
+            <div class="review-description">{{review.description}}</div>
+            <div class="review-rating-background">
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+              <i class="fa fa-star rating-star"></i>
+            </div>
+            <div class="review-rating-contain">
+              <i v-for="rating in review.rating" class="fa fa-star rating-star" v-bind:key="rating"></i>
+            </div>
+          </article>
+        </section>
+        <section class="strain-review-contain" v-if="isUserLoggedIn">
+          <div class="review-heading">
+            <h2>Add a Review</h2>
+            <p></p>
+          </div>
+          <form class="flex-column-nowrap">
+            <label for="strain-provider-select">Provider</label>
+            <select
+              class="select-all"
+              name="strain-providers"
+              id="strain-provider-select"
+              value="Select a provider to review"
+            >
+              <option
+                value="Select A Provider To Review"
+                disabled
+                selected
+              >Select A Provider To Review</option>
+              <option
+                v-for="reviewProvider in providers"
+                :value="reviewProvider.data.name"
+                v-bind:key="reviewProvider.data.id"
+                v-on:click="setReviewsProvider(reviewProvider.data.name, reviewProvider.data._id)"
+              >{{reviewProvider.data.name}}</option>
+            </select>
+            <label for="review-TA">Review</label>
+            <textarea
+              name="strain-review"
+              id="review-TA"
+              cols="30"
+              rows="10"
+              v-model="review.description"
+            ></textarea>
+            <label for="reviewRating">Total Rating</label>
+            <input type="number" value="Rate" class="short-num-input" v-model="review.rating" />
+            <label v-on:click="addReview()" class="gray-btn">Add Review</label>
+            <div v-if="message.length > 0">{{message}}</div>
+            <div v-if="errors.msg > 0">{{errors.msg}}</div>
+          </form>
+        </section>
       </section>
     </div>
   </div>
@@ -132,6 +139,8 @@ export default {
         shortReview: true
       },
       RetrievedReviews: [],
+      remainingStars: "",
+      numberOfReviews: "",
       errors: {
         msg: ""
       },
@@ -200,6 +209,7 @@ export default {
         `http://localhost:3000/api/reviews/${this.strain._id}`
       );
       this.RetrievedReviews = reviews.data;
+      this.numberOfReviews = this.RetrievedReviews.length;
     },
     async addReview() {
       console.log(this.review);
@@ -213,6 +223,7 @@ export default {
         this.errors.msg = "There was a problem adding the review";
       }
       this.message = "Review Added succesfully! Thank you!";
+      this.getReviews();
     }
   },
   computed: {
@@ -278,7 +289,6 @@ article img.strain-image {
   padding: 20px;
 }
 .strain-review-contain {
-  grid-area: 2/2;
   width: 100%;
   justify-content: flex-start;
   flex-flow: column;
@@ -294,9 +304,32 @@ article img.strain-image {
   grid-area: 2/2;
   display: block;
 }
-.show-reviews-container article {
+.show-reviews-container article.review-contain {
   width: 100%;
-  box-shadow: 1px 1px 1px 1px lightgray;
-  border-radius: 5px;
+  border-radius: 0;
+  border-bottom: solid 3px #3b342b;
+  position: relative;
+}
+
+.show-reviews-container .title {
+  padding: 0 0 10px;
+}
+
+.show-reviews-container .review-rating-contain {
+  margin: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.review-rating-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 25px;
+}
+
+.review-rating-background i {
+  color: rgb(225, 225, 225);
 }
 </style>

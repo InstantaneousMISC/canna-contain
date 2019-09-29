@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h1>Home Main</h1>
+  <div class="main-grid">
+    <section class="top-banner">
+      <h2>Explore Popular Hemp Strains</h2>
+    </section>
   </div>
 </template>
 
@@ -21,4 +23,12 @@ export default {
 </script>
 
 <style scoped>
+.top-banner {
+  grid-column: col-start/16;
+  grid-row: 1;
+  padding-top: 75px;
+}
+.top-banner h2 {
+  text-align: center;
+}
 </style>

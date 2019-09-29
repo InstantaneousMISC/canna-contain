@@ -14,13 +14,22 @@ h3,
 h4,
 h5 {
     font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 500;
+}
+
+div.v-application {
+    font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 select {}
-
-p {
-    font-family: 'Merriweather', serif;
-}
 
 input {
     border-bottom: 1px solid gray;
@@ -165,4 +174,21 @@ input {
 
 label {
     font-weight: 500;
+}
+
+.show-reviews-container .title {
+    font-weight: 400;
+}
+
+.rating-star {
+    color: #da9c05;
+}
+
+/*--------------------------------------
+                 Grids
+----------------------------------------*/
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(16, [col-start] 1fr);
+    grid-gap: 16px;
 }

@@ -116,6 +116,7 @@ export default {
   top: 0;
   background: white;
   width: 100%;
+  z-index: 999;
 }
 .user-options-nav > * {
   padding: 10px;
@@ -223,6 +224,9 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  position: sticky;
+  top: 45px;
+  z-index: 999;
 }
 .secondary-nav-header {
   justify-content: center;
@@ -231,8 +235,12 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 105px;
+  position: sticky;
+  top: 105px;
+  border-bottom: solid 2px lightgray;
+  z-index: 999;
 }
 .secondary-nav-header a {
   padding: 5px 25px;
