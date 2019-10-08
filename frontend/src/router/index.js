@@ -14,6 +14,10 @@ import addStrainReview from "../components/Forms/AddStrainReviewForm.vue"
 import EditStrainMain from "../components/Strains/EditStrainMain.vue"
 import ProvidersMain from "../components/Providers/ProvidersMain.vue"
 import AddProviderMain from "../components/Providers/AddProviderMain.vue"
+import NewsMain from "../components/News/NewsMain.vue"
+import ProductsMain from '../components/Products/ProductsMain.vue'
+import FarmsMain from '../components/Farms/FarmsMain.vue'
+import LearningMain from '../components/Learning/LearningMain.vue'
 
 Vue.use(VueRouter)
 
@@ -80,7 +84,27 @@ const routes = [{
         path: '/addProviders',
         name: 'ADDPROVIDER',
         component: AddProviderMain
+    }, {
+        path: '/news',
+        name: 'NEWS',
+        component: NewsMain
     },
+    {
+        path: '/products',
+        name: 'PRODUCTS',
+        component: ProductsMain
+    },
+    {
+        path: '/farms',
+        name: 'FARMS',
+        component: FarmsMain
+    },
+    {
+        path: '/learning',
+        name: 'LEARNING',
+        component: LearningMain
+    }
+
 ]
 
 export default new VueRouter({

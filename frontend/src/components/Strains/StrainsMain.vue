@@ -1,10 +1,6 @@
 <template>
-  <div class="main-content-contain">
-    <div class="grid-container">
-      <div class="main-content">
-        <Strains />
-      </div>
-    </div>
+  <div class="main-grid">
+    <Strains class="strains-container" />
   </div>
 </template>
 
@@ -29,18 +25,8 @@ export default {
 h1 {
   text-align: center;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "main-content side-content";
-}
-
-.main-content {
-  grid-area: main-content;
-}
-
-.side-content {
-  grid-area: side-content;
+.strains-container {
+  grid-row: 1 / row-end;
+  grid-column: 3/15;
 }
 </style>

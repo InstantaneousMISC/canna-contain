@@ -2,9 +2,19 @@
 @import "./normalize.css";
 
 
+
 /* Main site styles  */
 * {
     box-sizing: border-box;
+    color: #494949;
+}
+
+body {
+    padding-top: 130px;
+}
+
+hr {
+    color: #e7e7e7;
 }
 
 body,
@@ -17,12 +27,17 @@ h5 {
     font-weight: 500;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-weight: 500;
+h3 {
+    font-size: 16px;
+}
+
+div.v-application p,
+p {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
+    color: #8e8e8e;
+    margin: 0;
+    padding: 0;
 }
 
 div.v-application {
@@ -72,6 +87,58 @@ input {
 input {
     overflow: hidden;
     text-overflow: text-ellipse;
+}
+
+.text-input {
+    width: 100%;
+    border-bottom: solid 1px black;
+    margin: 10px 0;
+    padding: 8px;
+}
+
+form.select-input-combo-contain {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+select.select-input-combo {
+    text-decoration: inherit;
+    vertical-align: inherit;
+    background: #eee;
+    width: 115px;
+    padding: 13px;
+    border-radius: 7px 0 0 7px;
+    overflow: hidden;
+}
+
+input.select-input-combo {
+    padding: 13px;
+    background: white;
+    border: solid 1px white;
+    width: 600px;
+    border-radius: 0 7px 7px 0;
+}
+
+.select-input-combo::after {
+
+    content: "V";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: black;
+    font-size: 16px;
+
+}
+
+div.text-btn-combo {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+div.text-btn-combo button {
+    margin-left: 34px;
 }
 
 .select-all::-ms-expand {
@@ -184,11 +251,91 @@ label {
     color: #da9c05;
 }
 
+
+.flex-columns {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
+.container-1 {
+    border: solid 1px #e4e4e4;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 13px lightgray;
+}
+
 /*--------------------------------------
-                 Grids
+                 Grid System
 ----------------------------------------*/
 .main-grid {
     display: grid;
     grid-template-columns: repeat(16, [col-start] 1fr);
+    grid-template-rows: 110px;
+    grid-auto-rows: 125px;
     grid-gap: 16px;
+}
+
+.use-all-col {
+    grid-column: col-start/17;
+}
+
+/* .use-2-col {
+}
+
+.use-4-col {}
+
+.use-8-col {}
+
+.use-16-col {} */
+
+
+/*--------------------------------------
+                 Flex containers
+----------------------------------------*/
+
+.flex-col-center-top {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.flex-row-center-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/*--------------------------------------
+                Cards
+----------------------------------------*/
+
+
+.home-card {}
+
+.home-card:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.home-card picture img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.green-btn1 {
+    padding: 5px 2px;
+    color: white;
+    background-color: green;
+    border: solid 3px green;
+    border-bottom-color: green;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-bottom: solid 3px green;
+    border-radius: 5px;
+    width: 200px;
+    -webkit-box-shadow: 0px 2px 5px gray;
+    box-shadow: 0px 2px 5px gray;
 }

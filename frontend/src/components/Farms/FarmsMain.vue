@@ -1,5 +1,5 @@
 <template>
-  <div class="main-grid"></div>
+  <div class="main-grid">Farms</div>
 </template>
 
 <script>

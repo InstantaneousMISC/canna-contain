@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 .title-header-1 {
-  background: black;
+  background: #e3e3e3;
   color: white;
   display: flex;
   flex-flow: row nowrap;

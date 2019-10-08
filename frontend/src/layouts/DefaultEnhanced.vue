@@ -44,7 +44,7 @@
           <a href="#" class="account-support">Account Support</a>
         </section>
       </nav>
-      <header styles="height:200px" class="display-header">
+      <!-- <header styles="height:200px" class="display-header">
         <div class="top-logo">
           <a v-on:click="pushTo('home')">
             <img
@@ -53,7 +53,7 @@
             />
           </a>
         </div>
-      </header>
+      </header>-->
       <header class="top-nav-header">
         <input type="checkbox" id="top-bar-toggle" />
         <label class="sandwhichBtn" for="top-bar-toggle">
@@ -63,21 +63,21 @@
         </label>
         <!-- Use to split containers<div class="seperator"></div> -->
         <nav class="top-nav-links" id="top-vav-bar">
-          <a class="top-nav-link">Learning</a>
+          <a class="top-nav-link" v-on:click="pushTo('/strains')">Strains</a>
+          <a class="top-nav-link" v-on:click="pushTo('/providers')">Providers</a>
           <a class="top-nav-link">Reviews</a>
-          <a class="top-nav-link">Blog</a>
-          <a class="top-nav-link">Industry</a>
+          <a class="top-nav-link">Learning</a>
           <a class="top-nav-link">Shop</a>
         </nav>
       </header>
-      <nav class="secondary-nav-header">
-        <a v-on:click="pushTo('/strains')">Popular Strains</a>
-        <a v-on:click="pushTo('/providers')">Farms/Providers</a>
+      <!-- <nav class="secondary-nav-header">
         <a>Blogs</a>
         <a>Events</a>
         <a>Contests</a>
         <a>Directory</a>
-      </nav>
+        <a class="top-nav-link">Blog</a>
+        <a class="top-nav-link">Industry</a>
+      </nav>-->
       <router-view />
     </div>
   </div>
@@ -96,7 +96,8 @@ export default {
   methods: {
     //logout user
     async logOut() {
-      await this.$store.commit("/logOut");
+      await this.$store.commit("logOut");
+      this.$router.push({ path: "/home" });
     },
     pushTo(route) {
       this.$router.push({ path: route });
@@ -220,13 +221,14 @@ export default {
 .top-nav-header {
   justify-content: center;
   height: 65px;
-  background: #f2f2f2;
+  background: #e3e3e3;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 45px;
   z-index: 999;
+  width: 100%;
 }
 .secondary-nav-header {
   justify-content: center;
@@ -239,7 +241,6 @@ export default {
   top: 105px;
   position: sticky;
   top: 105px;
-  border-bottom: solid 2px lightgray;
   z-index: 999;
 }
 .secondary-nav-header a {
@@ -287,7 +288,7 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: black;
+  color: #4e4e4e;
 }
 .top-nav-header .top-nav-link:hover {
   background: #eee;

@@ -1,10 +1,6 @@
 <template>
-  <div class="main-content-contain">
-    <div class="grid-container">
-      <div class="main-content">
-        <Providers />
-      </div>
-    </div>
+  <div class="main-grid">
+    <Providers class="providers-main-contain" />
   </div>
 </template>
 
@@ -29,11 +25,8 @@ export default {
 h1 {
   text-align: center;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "main-content side-content";
+.providers-main-contain {
+  grid-column: 3/15;
 }
 
 .main-content {
