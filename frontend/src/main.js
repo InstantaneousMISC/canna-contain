@@ -14,6 +14,7 @@ import {
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
+import script from '../src/assets/scripts/script';
 
 //Setup Font Awesome-->
 library.add(faUserSecret)
@@ -23,6 +24,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 new Vue({
+  script,
   store,
   vuetify,
   router,

@@ -38,7 +38,7 @@ export default {
     return {
       states: states,
       filterState: "",
-      searchQuery: "+Hemp Flower, cbd flower",
+      searchQuery: "+Hemp",
       news: []
     };
   },
@@ -47,10 +47,10 @@ export default {
       try {
         var api = "6766d90dcc7a4eee8214fcc862085d03";
         var country = "us";
-        let url = `https://newsapi.org/v2/everything?q=${this.searchQuery} ${this.filterState}&apiKey=${api}&sortBy=popularity&qInTitle="hemp flower"&sortBy=relevancy`;
+        let url = `https://newsapi.org/v2/everything?q=${this.searchQuery} "${this.filterState}"&apiKey=${api}&sortBy=popularity&qInTitle="hemp flower"&sortBy=relevancy`;
         let newsFound = await axios.get(url);
         this.news = await newsFound.data.articles;
-        console.log(this.news);
+        console.log(url);
       } catch (err) {
         console.log(err);
       }
@@ -58,6 +58,7 @@ export default {
     async setStateFilter(state) {
       //Set filterState variable to clicked state
       this.filterState = await state;
+      console.log(this.filterState);
       //Retrieve news again
       await this.getNews();
     }

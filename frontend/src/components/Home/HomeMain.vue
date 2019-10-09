@@ -1,15 +1,39 @@
 <template>
   <div class="main-grid">
     <section class="top-banner flex-columns">
-      <h2>Explore Popular Hemp Strains</h2>
-      <form class="select-input-combo-contain">
-        <select class="select-input-combo">
-          <option value>All</option>
-          <option value>Type</option>
-          <option value>Smell</option>
-        </select>
-        <input class="select-input-combo" type="text" placeholder="SEARCH" />
-      </form>
+      <div class="top-banner-contain banner-1">
+        <img src="../../assets/images/canna-cover-1.jpg" alt class="fade" />
+        <div class="carousel-content">
+          <h2>Find the perfect strain for your needs and liking</h2>
+          <form class="select-input-combo-contain">
+            <select class="select-input-combo">
+              <option value>All</option>
+              <option value>Type</option>
+              <option value>Smell</option>
+            </select>
+            <input class="select-input-combo" type="text" placeholder="SEARCH" />
+          </form>
+        </div>
+        <article class="carousel-indicators">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </article>
+      </div>
+      <div class="top-banner-contain banner-2">
+        <img src="../../assets/images/canna-cover-2.jpg" alt class="fade" />
+        <div class="carousel-content">
+          <h2>Explore strains by their unique terpene profiles</h2>
+        </div>
+      </div>
+      <div class="top-banner-contain banner-3">
+        <img src alt class="fade" />
+        <div class="carousel-content">
+          <h2>Third Banner, no photo yet</h2>
+        </div>
+      </div>
+      <div></div>
     </section>
 
     <section class="use-all-col options-section-1 flex-col-center-top">
@@ -48,7 +72,7 @@
             </picture>
           </div>
           <div class="card-detail">
-            <h3>Products</h3>
+            <h3>Shop Products</h3>
             <p>Quality hemp products from CBD supplements to top shelf hemp flower</p>
           </div>
         </article>
@@ -100,10 +124,29 @@ export default {
   methods: {
     pushTo(to) {
       this.$router.push({ path: to });
+    },
+    async switchSlides() {
+      //counter to hold current slide
+      var counter = 0;
+      //collect banners by class name
+      const banners = document.getElementsByClassName("top-banner-contain");
+      //every 4 seconds change banners
+      setInterval(async function() {
+        //Set all banners to display:none
+        for (var x = 0; x < 3; ++x) {
+          banners[x].setAttribute("style", "display:none");
+        }
+        //set currrent banner to display
+        banners[counter].setAttribute("style", "display:block");
+        ++counter;
+        counter == 3 ? (counter = 0) : "";
+        console.log(counter);
+      }, 6000);
     }
   },
   components: {},
   async created() {
+    this.switchSlides();
     await this.$store.commit("addLayout", this.layout);
     console.log("layout added");
     console.log("Layout set to " + this.$store.getters.LAYOUT);
@@ -114,8 +157,7 @@ export default {
 <style scoped>
 .top-banner {
   grid-row: 1 / span 4;
-  grid-column: 3 / 15;
-  background-image: url("../../assets/images/canna-cover-1.jpg");
+  grid-column: 1 / 17;
   background-size: cover;
   position: relative;
 }
@@ -133,17 +175,53 @@ export default {
   right: 0;
   bottom: 0;
 }
+.top-banner > div {
+  min-height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+}
+
+.top-banner > div:nth-child(2) {
+  display: none;
+}
+
+.top-banner > div:nth-child(3) {
+  display: none;
+}
+
+.top-banner > div img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .top-banner h2 {
   color: white;
   text-align: center;
   font-size: 47px;
   font-weight: 300;
-  padding: 100px 0 47px 0;
+  padding: 0 0 40px 0;
   z-index: 2;
+  position: relative;
 }
 .top-banner form {
   z-index: 2;
+  position: relative;
+}
+
+.top-banner .carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
 }
 
 .options-section-1 {
@@ -216,5 +294,25 @@ export default {
   height: 150px;
   width: 100%;
   padding: 25px 20px 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.carousel-indicators span {
+  background: white;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  z-index: 5;
+  border-radius: 10px;
+  margin: 5px;
+}
+.carousel-indicators span:hover {
+  cursor: pointer;
+  z-index: inherit;
 }
 </style>

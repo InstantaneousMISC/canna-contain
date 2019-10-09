@@ -27,7 +27,11 @@ const providerSchema = new schema({
             type: Date,
             default: Date.now()
         }
-    }]
+    }],
+    preferred: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = provider = mongoose.model('provider', providerSchema)

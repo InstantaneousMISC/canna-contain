@@ -34,6 +34,10 @@ const strainSchema = new schema({
         type: Date,
         default: Date.now()
     },
+    preferred: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = Message = mongoose.model('strain', strainSchema)
