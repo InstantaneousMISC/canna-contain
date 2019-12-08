@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
-const strainSchema = require('./strains').schema
-const reviewSchema = require('./review').schema
 
 const providerSchema = new schema({
     name: {
@@ -10,6 +8,7 @@ const providerSchema = new schema({
     },
     url: String,
     description: String,
+    coupon: String,
     dateAdded: {
         type: Date,
         default: Date.now()
@@ -31,7 +30,10 @@ const providerSchema = new schema({
     preferred: {
         type: Boolean,
         default: false
-    }
+    },
+    address: String,
+    phone: String,
+    email: String
 })
 
 module.exports = provider = mongoose.model('provider', providerSchema)

@@ -47,7 +47,7 @@ export default {
       try {
         var api = "6766d90dcc7a4eee8214fcc862085d03";
         var country = "us";
-        let url = `https://newsapi.org/v2/everything?q=${this.searchQuery} "${this.filterState}"&apiKey=${api}&sortBy=popularity&qInTitle="hemp flower"&sortBy=relevancy`;
+        let url = `https://newsapi.org/v2/everything?q=${this.searchQuery} "${this.filterState}"&apiKey=${api}&sortBy=popularity&qInTitle="hemp AND flower AND cbd and cannabis"&sortBy=relevancy`;
         let newsFound = await axios.get(url);
         this.news = await newsFound.data.articles;
         console.log(url);

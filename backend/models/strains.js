@@ -12,11 +12,19 @@ const strainSchema = new schema({
     },
     type: String,
     images: String,
+    effects: String,
+    cannabiniods: [{
+        name: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'cannabinoid'
+        }
+    }],
     terpenes: [{
         id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'terpenes'
-        }
+        },
+        amount: String
     }],
     providers: [{
         providerID: {

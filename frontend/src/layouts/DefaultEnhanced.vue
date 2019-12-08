@@ -220,7 +220,7 @@ export default {
 }
 .top-nav-header {
   justify-content: center;
-  height: 65px;
+  height: 47px;
   background: #e3e3e3;
   display: flex;
   flex-flow: row nowrap;
@@ -280,15 +280,21 @@ export default {
   flex-flow: nowrap row;
 }
 .top-nav-header .top-nav-link {
-  height: 65px;
   width: 87px;
   text-align: center;
   vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   cursor: pointer;
   color: #4e4e4e;
+  padding: 2px;
 }
 .top-nav-header .top-nav-link:hover {
   background: #eee;

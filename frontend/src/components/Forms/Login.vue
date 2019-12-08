@@ -55,8 +55,9 @@ export default {
         } else {
           //if registration passes store returned token payload in state
           await this.$store.commit("login", loggedIn.data);
+          localStorage.setItem('token', loggedIn.data.token)
           await this.$router.push({ path: "/dash" });
-          console.log("signed in");
+          console.log("signed in", loggedIn.data.token);
         }
       } catch (err) {
         this.errors.push({ msg: err });

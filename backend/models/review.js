@@ -19,7 +19,16 @@ const reviewSchema = new schema({
         name: {
             type: String
         }
-
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
+    indoor: {
+        type: Boolean
+    },
+    outdoor: {
+        type: Boolean
     },
     description: {
         type: String,
@@ -31,15 +40,39 @@ const reviewSchema = new schema({
         max: 10,
         required: true
     },
-    appearance: String,
-    smell: String,
-    taste: String,
-    feel: String,
-    burn: String,
-    smoke: String,
+    appearance: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
+    smell: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
+    taste: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
+    feel: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
+    burn: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
+    smoke: {
+        type: Number,
+        min: 0,
+        max: 10,
+    },
     images: String,
-    shortReview: Boolean,
-    longReview: Boolean,
+    feelings: String,
+    method: String,
     dateAdded: {
         type: Date,
         default: Date.now()

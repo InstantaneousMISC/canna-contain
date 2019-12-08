@@ -2,12 +2,6 @@
   <section>
     <h1 class="section-title">Popular Strains</h1>
     <article v-for="strain in strains" v-bind:key="strain._id" v-on:click="strainPage(strain._id)">
-      <img
-        v-if="strain.images"
-        :src="require('../../assets/images/' + strain.images.split(',')[0].trim())"
-        :alt="`Image of ${strain.name}`"
-        :title="`Image of ${strain.name}`"
-      />
       <div class="strain-detail-contain">
         <span class="strain-name">
           <strong>{{strain.name}}</strong>
@@ -75,6 +69,10 @@ section img {
 }
 .strain-detail-contain {
   padding: 0 0 0 10px;
+  background-color:#ececec;
+  border: solid 1px lightgray;
+  border-radius: 3px;
+  margin-top: 30px;
 }
 span.strain-name {
   text-align: center;

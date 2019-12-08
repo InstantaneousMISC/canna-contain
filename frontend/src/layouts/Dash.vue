@@ -98,7 +98,6 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: 70px 220px 1fr;
-  grid-template-rows: 70px 1fr;
   grid-template-areas: "mini-side-nav top-nav-header top-nav-header" "mini-side-nav side-nav-main main-content";
 }
 

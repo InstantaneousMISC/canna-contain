@@ -28,9 +28,12 @@
         </div>
       </div>
       <div class="top-banner-contain banner-3">
-        <img src alt class="fade" />
+        <img src="../../assets/images/canna-cover-3.jpg" alt class="fade" />
         <div class="carousel-content">
-          <h2>Third Banner, no photo yet</h2>
+          <h2>
+            Harvest season 2019
+            <br />Get the scoop on what's availabe and what's to look forward to
+          </h2>
         </div>
       </div>
       <div></div>
@@ -127,7 +130,7 @@ export default {
     },
     async switchSlides() {
       //counter to hold current slide
-      var counter = 0;
+      var counter = 1; //counter offset by 1 to fire on the 2nd banner when interval begin. First banner is displayed by default
       //collect banners by class name
       const banners = document.getElementsByClassName("top-banner-contain");
       //every 4 seconds change banners
@@ -141,8 +144,11 @@ export default {
         ++counter;
         counter == 3 ? (counter = 0) : "";
         console.log(counter);
-      }, 6000);
+      }, 8000);
     }
+  },
+  destroyed() {
+    clearInterval();
   },
   components: {},
   async created() {
@@ -229,6 +235,7 @@ export default {
   grid-column: 3/15;
   position: relative;
   background-color: #f5f5f5;
+  padding-top: 34px;
 }
 
 .options-section-1 header {

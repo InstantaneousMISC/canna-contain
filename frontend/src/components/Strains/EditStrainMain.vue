@@ -38,9 +38,18 @@
           <strong>Description:</strong>
           {{strain.description}}
         </p>
+        <article class="strain-property-contain">
+          <p>Cbd</p>
+          <span>18%</span>
+        </article>
+          <article class="strain-property-contain">
+          <p>Terpene profile</p>
+          <span>18%</span>
+        </article>
         <br />
         <br />
-        <section class="show-reviews-container">
+      </section>
+              <section class="show-reviews-container">
           <h3>Reviews ({{numberOfReviews}})</h3>
           <article
             v-for="review in RetrievedReviews"
@@ -109,7 +118,6 @@
             <div v-if="errors.msg > 0">{{errors.msg}}</div>
           </form>
         </section>
-      </section>
     </div>
   </div>
 </template>
@@ -238,7 +246,6 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
-  grid-template-rows: 1fr 1fr;
   grid-template-areas: "main-content side-content";
   padding: 25px;
 }
@@ -289,6 +296,7 @@ article img.strain-image {
   padding: 20px;
 }
 .strain-review-contain {
+  grid-column: 2;
   width: 100%;
   justify-content: flex-start;
   flex-flow: column;

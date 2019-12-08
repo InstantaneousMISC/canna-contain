@@ -40,9 +40,21 @@
             <div class="half">
               <label for="select-providers">Select Strain Type</label>
               <select class="select-all">
+                <option disabled selected>Strain Type</option>
                 <option>Sativa</option>
                 <option>Indica</option>
                 <option>Hybrid</option>
+              </select>
+            </div>
+            <div class="half">
+              <label for="select-providers">Select Strain Effects</label>
+              <select class="select-all">
+                <option disabled selected>Effects</option>
+                <option>Energizing</option>
+                <option>Uplifting</option>
+                <option>Focus</option>
+                <option>Relaxing</option>
+                <option>Sleeping</option>
               </select>
             </div>
             <div class="half">

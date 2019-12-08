@@ -20,6 +20,8 @@ app.use('/api/messages',
 app.use('/api/strains',
     require('./routes/api/strains'))
 app.use('/api/reviews', require('./routes/api/reviews'))
+app.use('/api/terpenes', require('./routes/api/terpenes'))
+// app.use('/api/cannabinoids', require('./routes/api/cannabinoids'))
 
 app.listen(port, () => console.log(`app running on port ${port}`))
 

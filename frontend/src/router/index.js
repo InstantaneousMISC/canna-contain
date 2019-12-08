@@ -12,6 +12,7 @@ import StrainsMain from "../components/Strains/StrainsMain.vue"
 import addStrainsMain from "../components/Strains/AddStrainMain.vue"
 import addStrainReview from "../components/Forms/AddStrainReviewForm.vue"
 import EditStrainMain from "../components/Strains/EditStrainMain.vue"
+import ShowStrainMain from "../components/Strains/ShowStrainMain.vue"
 import ProvidersMain from "../components/Providers/ProvidersMain.vue"
 import AddProviderMain from "../components/Providers/AddProviderMain.vue"
 import NewsMain from "../components/News/NewsMain.vue"
@@ -62,8 +63,8 @@ const routes = [{
     },
     {
         path: '/strains/:id',
-        name: 'EDITSTRAIN',
-        component: EditStrainMain
+        name: 'SHOWSTRAIN',
+        component: ShowStrainMain
     },
     {
         path: '/addStrain',
